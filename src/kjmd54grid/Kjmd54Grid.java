@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
+import java.lang.Math;
 
 /**
  *
@@ -24,7 +25,7 @@ public class Kjmd54Grid extends Application {
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
         Scene scene = new Scene(root, 300, 250);
-        GridGenerator generator = new GridGenerator(root, 10, 10);
+        GridGenerator generator = new GridGenerator(root, scene.getHeight(), scene.getWidth(), 10, 10);
         generator.generate();
         
         primaryStage.setTitle("Grid");
