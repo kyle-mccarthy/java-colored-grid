@@ -48,6 +48,16 @@ public class GridGenerator {
         this.colors.add(Color.BLUE);
         this.colors.add(Color.AQUAMARINE);
         this.colors.add(Color.GREEN);
+                this.colors.add(Color.RED);
+        this.colors.add(Color.BLUE);
+        this.colors.add(Color.GREEN);
+        this.colors.add(Color.AQUAMARINE);
+        this.colors.add(Color.CYAN);
+        this.colors.add(Color.MAGENTA);
+        this.colors.add(Color.ORANGE);
+        this.colors.add(Color.PINK);
+        this.colors.add(Color.YELLOW);
+        this.colors.add(Color.BLUEVIOLET);
     }
     
     public void generate() {
