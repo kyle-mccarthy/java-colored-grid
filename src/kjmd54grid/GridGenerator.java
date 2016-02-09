@@ -6,6 +6,7 @@
 package kjmd54grid;
 
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
@@ -33,7 +34,9 @@ public class GridGenerator {
         this.grid = pane;
         this.rows = rows;
         this.cols = cols;
+        this.grid.setGridLinesVisible(true);
         this.initColors();
+        this.generate();
     }
     
     /**
@@ -47,19 +50,13 @@ public class GridGenerator {
         this.colors.add(Color.GREEN);
     }
     
-    public void generateRows() {
-        
-    }
-    
-    public void generateColumns() {
-        
-    }
-    
-    public void generateBlocks() {
-        Random rand = new Random();
-        Rectangle r = new Rectangle(this.blockWidth, this.blockHeight, 
-                colors.get(rand.nextInt(this.colors.size())));
-        this.grid.getChildren().add(r);
-    }
-    
+    public void generate() {
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                Random rand = new Random();
+                Rectangle r = new Rectangle(20, 20, colors.get(rand.nextInt(this.colors.size())));
+                this.grid.add(r, i, j);
+            }
+        }
+    }    
 }
