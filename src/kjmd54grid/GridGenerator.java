@@ -6,7 +6,6 @@
 package kjmd54grid;
 
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
@@ -40,13 +39,28 @@ public class GridGenerator {
         this.height = height;
         this.width = width;
         this.blocks = new Rectangle[this.rows][this.cols];
-        this.grid.setGridLinesVisible(true);
         this.initColors();
         this.generateBlocks();
     }
     
     /**
-     * 
+     * Set the width of the grid
+     * @param width 
+     */
+    public void setWidth(double width) {
+        this.width = width;
+    }
+    
+    /**
+     * Set the height of the grid
+     * @param height 
+     */
+    public void setHeight(double height) {
+        this.height = height;
+    }
+    
+    /**
+     * Set the colors to be used on the grid.
      */
     protected void initColors()
     {
@@ -62,7 +76,9 @@ public class GridGenerator {
     }
     
     /**
-     * 
+     * Calculate the size of the blocks width and height based on the width
+     * and height of the grid in combination with the desired number of rows
+     * and columns.
      */
     protected void calcBlockSize()
     {
@@ -70,6 +86,11 @@ public class GridGenerator {
         this.blockHeight = this.height/this.rows;
     }
     
+    /**
+     * Generate the required number of blocks based on the rows and columns,
+     * set the size of the blocks based on the size of the grid.  Make the block
+     * a random color for the colors array.
+     */
     protected void generateBlocks() {
        this.calcBlockSize();
         for (int i = 0; i < this.rows; i++) {
@@ -82,7 +103,7 @@ public class GridGenerator {
     }
     
     /**
-     * 
+     * Append the blocks to the grid.
      */
     public void addBlocksToGrid() {
         this.calcBlockSize();
@@ -91,5 +112,20 @@ public class GridGenerator {
                 this.grid.add(this.blocks[i][j], i, j);
             }
         }
-    }    
+    }
+
+    /**
+     * Refresh the dimensions of the block width/height.  Will be called if the
+     * scene is resized to ensure that the there is no whitespace/trim.
+     */
+    public void refreshBlockDimensions() {
+        this.calcBlockSize();
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                Rectangle r = this.blocks[i][j];
+                r.setWidth(this.blockWidth);
+                r.setHeight(this.blockHeight);
+            }
+        }
+    }
 }
