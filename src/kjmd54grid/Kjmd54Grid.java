@@ -9,7 +9,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 /**
  *
