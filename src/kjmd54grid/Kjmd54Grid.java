@@ -23,10 +23,11 @@ public class Kjmd54Grid extends Application {
     @Override
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
-        
         Scene scene = new Scene(root, 300, 250);
+        GridGenerator generator = new GridGenerator(root, scene.getWidth(), scene.getHeight());
+        generator.generateBlocks();
         
-        primaryStage.setTitle("Hello");
+        primaryStage.setTitle("Grid");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
