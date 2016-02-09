@@ -25,6 +25,7 @@ public class GridGenerator {
     protected double blockWidth = 0;
     protected double blockHeight = 0;
     protected ArrayList<Color> colors = new ArrayList<>();
+    protected Rectangle[][] blocks;
     
     /**
      * 
@@ -38,9 +39,10 @@ public class GridGenerator {
         this.cols = cols;
         this.height = height;
         this.width = width;
+        this.blocks = new Rectangle[this.rows][this.cols];
         this.grid.setGridLinesVisible(true);
         this.initColors();
-        this.generate();
+        this.generateBlocks();
     }
     
     /**
@@ -48,35 +50,45 @@ public class GridGenerator {
      */
     protected void initColors()
     {
-        this.colors.add(Color.RED);
-        this.colors.add(Color.BLUE);
-        this.colors.add(Color.AQUAMARINE);
-        this.colors.add(Color.GREEN);
-        this.colors.add(Color.RED);
-        this.colors.add(Color.BLUE);
-        this.colors.add(Color.GREEN);
-        this.colors.add(Color.AQUAMARINE);
-        this.colors.add(Color.CYAN);
-        this.colors.add(Color.MAGENTA);
-        this.colors.add(Color.ORANGE);
-        this.colors.add(Color.PINK);
-        this.colors.add(Color.YELLOW);
-        this.colors.add(Color.BLUEVIOLET);
+        this.colors.add(Color.rgb(248, 177, 149));
+        this.colors.add(Color.rgb(246, 114, 128));
+        this.colors.add(Color.rgb(192, 108, 132));
+        this.colors.add(Color.rgb(108, 91, 123));
+        this.colors.add(Color.rgb(53, 92, 125));
+        this.colors.add(Color.rgb(142, 125, 142));
+        this.colors.add(Color.rgb(192, 131, 140));
+        this.colors.add(Color.rgb(241, 137, 134));
+        this.colors.add(Color.rgb(220, 155, 143));
     }
     
-    private void calcBlockSize()
+    /**
+     * 
+     */
+    protected void calcBlockSize()
     {
         this.blockWidth = this.width/this.cols;
         this.blockHeight = this.height/this.rows;
     }
     
-    public void generate() {
-        this.calcBlockSize();
+    protected void generateBlocks() {
+       this.calcBlockSize();
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
                 Random rand = new Random();
                 Rectangle r = new Rectangle(this.blockWidth, this.blockHeight, this.colors.get(rand.nextInt(this.colors.size())));
-                this.grid.add(r, i, j);
+                this.blocks[i][j] = r;
+            }
+        } 
+    }
+    
+    /**
+     * 
+     */
+    public void addBlocksToGrid() {
+        this.calcBlockSize();
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                this.grid.add(this.blocks[i][j], i, j);
             }
         }
     }    

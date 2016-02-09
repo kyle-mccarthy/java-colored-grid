@@ -26,7 +26,7 @@ public class Kjmd54Grid extends Application {
         GridPane root = new GridPane();
         Scene scene = new Scene(root, 300, 250);
         GridGenerator generator = new GridGenerator(root, scene.getHeight(), scene.getWidth(), 10, 10);
-        generator.generate();
+        generator.addBlocksToGrid();
         
         primaryStage.setTitle("Grid");
         primaryStage.setScene(scene);
