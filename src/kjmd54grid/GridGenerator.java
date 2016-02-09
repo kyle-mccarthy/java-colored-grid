@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 import java.util.Random;
+import java.lang.Math;
 
 /**
  *
@@ -77,8 +78,8 @@ public class GridGenerator {
      */
     protected void calcBlockSize()
     {
-        this.blockWidth = this.width/this.cols;
-        this.blockHeight = this.height/this.rows;
+        this.blockWidth = Math.ceil(this.width/this.cols);
+        this.blockHeight = Math.ceil(this.height/this.rows);
     }
     
     /**
