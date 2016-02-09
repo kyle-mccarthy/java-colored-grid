@@ -6,15 +6,11 @@
 package kjmd54grid;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.paint.Color;
-import java.lang.Math;
-
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 /**
  *
  * @author kylemccarthy
@@ -24,9 +20,22 @@ public class Kjmd54Grid extends Application {
     @Override
     public void start(Stage primaryStage) {
         GridPane root = new GridPane();
+        
         Scene scene = new Scene(root, 300, 250);
-        GridGenerator generator = new GridGenerator(root, scene.getHeight(), scene.getWidth(), 10, 10);
-        generator.addBlocksToGrid();
+        GridGenerator grid = new GridGenerator(root, scene.getHeight(), scene.getWidth(), 10, 10);
+        grid.addBlocksToGrid();
+        
+        // listen for the resizing of the width
+        scene.widthProperty().addListener((ObservableValue<? extends Number> observable, Number oldWidth, Number newWidth) -> {
+            grid.setWidth(newWidth.doubleValue());
+            grid.refreshBlockDimensions();
+        });
+        
+        // listen for the resizing of the height
+        scene.heightProperty().addListener((ObservableValue<? extends Number> observable, Number oldHeight, Number newHeight) -> {
+            grid.setHeight(newHeight.doubleValue());
+            grid.refreshBlockDimensions();
+        });
         
         primaryStage.setTitle("Grid");
         primaryStage.setScene(scene);
