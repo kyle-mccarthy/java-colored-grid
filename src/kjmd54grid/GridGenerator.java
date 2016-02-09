@@ -19,20 +19,9 @@ public class GridGenerator {
     protected GridPane grid;
     protected int rows = 0;
     protected int cols = 0;
-    protected double height = 0;
-    protected double width = 0;
     protected ArrayList<Color> colors = new ArrayList<>();
     protected final int blockWidth = 10;
     protected final int blockHeight = 10;
-    
-    /**
-     * 
-     * @param pane 
-     */
-    GridGenerator(GridPane pane) {
-        this.grid = pane;
-        this.initColors();
-    }
     
     /**
      * 
@@ -40,10 +29,10 @@ public class GridGenerator {
      * @param width
      * @param height 
      */
-    GridGenerator(GridPane pane, double width, double height) {
+    GridGenerator(GridPane pane, int rows, int cols) {
         this.grid = pane;
-        this.height = height;
-        this.width = width;
+        this.rows = rows;
+        this.cols = cols;
         this.initColors();
     }
     
@@ -56,38 +45,6 @@ public class GridGenerator {
         this.colors.add(Color.BLUE);
         this.colors.add(Color.AQUAMARINE);
         this.colors.add(Color.GREEN);
-    }
-    
-    /**
-     * 
-     * @param width 
-     */
-    public void setWidth(int width) {
-        this.width = width;
-    }
-    
-    /**
-     * 
-     * @param height 
-     */
-    public void setHeight(int height) {
-        this.height = height;
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public double getWidth() {
-        return width;
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public double getHeight() {
-        return height;
     }
     
     public void generateRows() {
