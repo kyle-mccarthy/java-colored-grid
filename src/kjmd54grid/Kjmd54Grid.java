@@ -21,7 +21,7 @@ public class Kjmd54Grid extends Application {
         GridPane root = new GridPane();
         
         Scene scene = new Scene(root, 300, 250);
-        GridGenerator grid = new GridGenerator(root, scene.getHeight(), scene.getWidth(), 15, 10);
+        GridGenerator grid = new GridGenerator(root, scene.getHeight(), scene.getWidth(), 10, 10);
         grid.addBlocksToGrid();
         
         // listen for the resizing of the width

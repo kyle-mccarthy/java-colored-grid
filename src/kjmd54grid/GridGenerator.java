@@ -92,7 +92,6 @@ public class GridGenerator {
                 Random rand = new Random();
                 Rectangle r = new Rectangle(this.blockWidth, this.blockHeight, 
                         this.colors.get(rand.nextInt(this.colors.size())));
-                System.out.println("i: " + i + " - j:" + j);
                 this.blocks[i][j] = r;
             }
         } 
