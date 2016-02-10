@@ -5,7 +5,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 import java.util.Random;
-import java.lang.Math;
 
 /**
  *
@@ -76,8 +75,7 @@ public class GridGenerator {
      * and height of the grid in combination with the desired number of rows
      * and columns.
      */
-    protected void calcBlockSize()
-    {
+    protected void calcBlockSize() {
         this.blockWidth = Math.ceil(this.width/this.cols);
         this.blockHeight = Math.ceil(this.height/this.rows);
     }
@@ -92,7 +90,9 @@ public class GridGenerator {
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
                 Random rand = new Random();
-                Rectangle r = new Rectangle(this.blockWidth, this.blockHeight, this.colors.get(rand.nextInt(this.colors.size())));
+                Rectangle r = new Rectangle(this.blockWidth, this.blockHeight, 
+                        this.colors.get(rand.nextInt(this.colors.size())));
+                System.out.println("i: " + i + " - j:" + j);
                 this.blocks[i][j] = r;
             }
         } 
@@ -105,7 +105,7 @@ public class GridGenerator {
         this.calcBlockSize();
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
-                this.grid.add(this.blocks[i][j], i, j);
+                this.grid.add(this.blocks[i][j], j, i);
             }
         }
     }
